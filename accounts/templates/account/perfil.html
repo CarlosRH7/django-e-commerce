@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Perfil</title>
+</head>
+<body>
+<h1>Binevenido {{request.user.username}}</h1>
+
+	<h2>Tus datos</h2>
+	<h4>{{request.user.email}}</h4>
+	<h4>{{request.user.profile.email}}</h4>
+	<img width="100px" src="{{request.user.profile.img.url}}">
+
+
+</body>
+</html>

@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+ <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css">
+
+  <script src="https://code.jquery.com/jquery-1.12.4.js"
+  integrity="sha256-Qw82+bXyGq6MydymqBxNPYTaUXXq7c8v3CwiYwLLNXU="
+  crossorigin="anonymous"></script>
+
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/js/materialize.min.js"></script>
+    
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+	<title>e-commerce</title>
+</head>
+<body>
+
+
+	<div class="navbar-fixed">
+
+  <ul id="dropdown1" class="dropdown-content">
+  <li><a href="{%url 'login'%}">Iniciar sesión</a></li>
+  <li><a href="{%url 'registration'%}">Crear cuenta</a></li>
+  </ul>
+
+    <nav>
+      <div class="nav-wrapper white">
+        <a href="{%url 'inicio'%}" class="brand-logo" style="color:black;">E-COMMERCE</a>
+
+       
+        <ul class="right hide-on-med-and-down">
+      <!--   <li>
+           <form action="{%url 'busqueda'%}" method="GET">
+              <input type="text" name="b" value="{{ query|escape }}">
+              <input type="submit" value="Search">
+            </form>
+        </li> -->
+        <li>    
+        <form action="{%url 'busqueda'%}" method="GET">
+        <div class="input-field col s6 black">
+          <i class="material-icons prefix ">search</i>
+          <input id="icon_prefix" type="text" class="validate" name="b" value="{{ query|escape }}">
+          <label for="icon_prefix "></label>
+        </div>
+        </form>
+
+        </li>
+          <li><a href="" style="color:black;">Contacto</a></li>
+          <li><a href="" style="color:black;">Components</a></li>
+      <li><a class="dropdown-button black-text" href="#!" data-activates="dropdown1">Dropdown<i class="material-icons right">perm_identity</i></a></li>
+
+          {%with total_items=cart|length%}
+          {%if cart|length > 0%}
+          <li class="black-text">
+          <a class="black-text" href="{%url 'cart:cart_detail'%}">
+            <i class=" small material-icons" >shopping_cart</i>
+          </a>
+          </li>
+          <li >
+          <a class="black-text" href="{%url 'cart:cart_detail'%}">
+            {{total_items}} Articulo{{total_items|pluralize}}, ${{cart.get_total_precio}}
+          </a>
+          </li>
+
+          {%else%}
+          <li class="black-text">
+          <a class="black-text" href="{%url 'cart:cart_detail'%}">
+            <i class=" small material-icons" >shopping_cart</i>
+          </a>
+          </li>
+
+          <li class="black-text">
+            <a class="grey-text" style="color:black;">Tu carrito está vacío.</a>
+            </li>
+          {%endif%}
+          {%endwith%}
+        </ul>
+      </div>
+    </nav>
+  	</div>
+
+
+{%block content%}
+{%endblock content%}
+
+
+
+    <footer class="page-footer  grey lighten-2" style="position:relative;bottom:-50px;">
+          <div class="container">
+            <div class="row">
+              <div class="col l6 s12">
+                <h5 class="black-text">Footer Content</h5>
+                <p class=" black-text">You can use rows and columns here to organize your footer content.</p>
+              </div>
+              <div class="col l4 offset-l2 s12">
+                <h5 class="black-text">Links</h5>
+                <ul>
+                  <li><a class="black-text text-lighten-3" href="#!">Link 1</a></li>
+                  <li><a class="black-text text-lighten-3" href="#!">Link 2</a></li>
+                  <li><a class="black-text text-lighten-3" href="#!">Link 3</a></li>
+                  <li><a class="black-text text-lighten-3" href="#!">Link 4</a></li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="footer-copyright">
+            <div class="container black-text">
+            © 2014 Copyright Text
+            <a class="text-lighten-4 black-text right" href="#!">More Links</a>
+            </div>
+          </div>
+        </footer>
+
+    
+<script type="text/javascript">
+ 
+     $(document).ready(function() {
+        $('select').material_select();
+      });
+
+
+    $(document).ready(function(){
+      $('.slider').slider({full_width: true});
+    });
+
+
+       $(document).ready(function(){
+      $('.parallax').parallax();
+    });
+        
+         $(document).ready(function() {
+    Materialize.updateTextFields();
+  });
+
+
+
+
+  $(document).ready(function(){
+    $('.materialboxed').materialbox();
+  });
+
+     $(".dropdown-button").dropdown();
+
+</script>
+
+<style type="text/css">
+
+body{
+
+  height: 100%;
+  width: 100%;
+
+  
+
+}
+  
+  .parallax-container {
+      height: "your height here";
+    }
+</style>
+</body>
+</html>

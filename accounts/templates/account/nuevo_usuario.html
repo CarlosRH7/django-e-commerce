@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+	<style type="text/css">
+		.errorlist li{
+			background: red;
+			color:white;
+			font-size: 4rem;
+			text-align: center;
+		}
+		input{
+			width: 300px;
+		}	
+	</style>
+
+
+	<title>Registrar</title>
+</head>
+<body>
+	<form action="." method="post">
+		{%csrf_token%}
+		{{form.as_p}}
+		<input type="submit" value="Registrar">
+	</form>
+</body>
+</html>

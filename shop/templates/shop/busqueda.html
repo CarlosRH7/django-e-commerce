@@ -1,0 +1,42 @@
+{%extends 'base.html'%}
+{%block content%}
+
+  {% if query %}
+<!-- <p>Resultados de busqueda #"{{ query|escape }}":</p>-->		    	{% if results %}
+	<ul>
+	<div class="row">
+	{% for producto in results %}
+    	<div class="col s12 m3">	
+		 <div class="card">
+		    <div class="card-image waves-effect waves-block waves-light">
+		      <img class="activator" src="{{producto.img.url}}" height="300px">
+		    </div>
+		    <div class="card-content">
+		      <span class="card-title activator grey-text text-darken-4">{{producto.nombre}}<i class="material-icons right">more_vert</i></span>
+		      <p><a class="btn black" href="{%url 'detalle_shop' producto.id%}" style="width:100%">Ver detalles</a></p><br>
+			  
+			  <form action="{%url 'cart:cart_add' producto.id%}" method="post">
+		      {%csrf_token%}
+		      {{form.as_p}}
+		      <input style="width:100%" type="submit" value="Agregar al carrito" class="btn black">
+		    </form>
+
+   			 </p>
+		    </div>
+		    <div class="card-reveal">
+		      <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+		      <p>Here is some more information about this product that is only revealed once clicked on.</p>
+		    </div>
+		  </div>
+		</div>
+	{% endfor %}
+	</div>
+	</ul>
+	{% else %}
+	  <p>No se encontro ningún producto.</p>
+	  <center><a class="btn" href="{%url 'inicio'%}" style="margin-top:200px;margin-bottom:200px;">Regresar al inicio</a></center>
+
+	{% endif %}
+	{% else %}
+  {% endif %}
+{%endblock content%}

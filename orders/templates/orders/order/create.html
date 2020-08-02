@@ -1,0 +1,36 @@
+{%extends 'base.html'%}
+{%load static%}
+
+{%block content%}
+
+
+	<h3>Tus productos:</h3>
+		<table class="striped"> 
+		<tr  class="green">
+			<th>Imagen</th>
+		    <th>Nombre</th>
+		    <th>Cantidad</th>
+		    <th>Precio unitario</th>
+		  </tr>
+		{%for item in cart%}
+		  <tr>
+		  <td><img style="max-width:150px;" src="{{item.producto.img.url}}"></td>
+		  <td>{{item.producto.nombre}}</td>
+		  <td>{{item.quantity}}</td>
+		  <td>${{item.precio_total}}</td>
+		  </tr>
+		{%endfor%}
+		</table>
+	<p  class="green">Total de tu compra: $ {{cart.get_total_precio}}</p>
+
+
+<div class="container">
+	<h4>Ingresa tus datos para completar la compra:</h4>
+	<form action="." method='post' >
+		{%csrf_token%}
+		{{form.as_p}}
+		<input type="submit" value="Finalizar Compra" class="btn">
+	</form>
+</div>
+{%endblock content%}
+
